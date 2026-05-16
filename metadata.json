@@ -1,0 +1,8 @@
+{
+  "name": "JARVIS Desktop Assistant",
+  "description": "Phase 1 of a futuristic Iron Man JARVIS desktop assistant using Python, PyQt6, and Voice Recognition.",
+  "requestFramePermissions": [
+    "microphone"
+  ],
+  "majorCapabilities": []
+}

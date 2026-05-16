@@ -1,0 +1,107 @@
+@import "tailwindcss";
+
+@theme {
+  --animate-spin-slow: spin 8s linear infinite;
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+}
+
+@layer utilities {
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 4px;
+  }
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: rgba(8, 145, 178, 0.05);
+  }
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: rgba(34, 211, 238, 0.3);
+    border-radius: 10px;
+  }
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: rgba(34, 211, 238, 0.5);
+  }
+
+  .scanlines::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to bottom,
+      transparent 50%,
+      rgba(34, 211, 238, 0.02) 50%
+    );
+    background-size: 100% 4px;
+    z-index: 50;
+    pointer-events: none;
+    animation: scan 10s linear infinite;
+  }
+
+  .hologram-flicker {
+    animation: flicker 4s linear infinite;
+  }
+
+  @keyframes flicker {
+    0% { opacity: 1; }
+    3% { opacity: 0.85; }
+    6% { opacity: 1; }
+    7% { opacity: 0.9; }
+    8% { opacity: 1; }
+    45% { opacity: 1; }
+    46% { opacity: 0.95; }
+    47% { opacity: 1; }
+    100% { opacity: 1; }
+  }
+
+  .glass-panel {
+    background: linear-gradient(135deg, rgba(8, 51, 68, 0.2) 0%, rgba(8, 51, 68, 0.05) 100%);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(34, 211, 238, 0.1);
+  }
+
+  @keyframes scan {
+    from { background-position: 0 0; }
+    to { background-position: 0 100%; }
+  }
+
+  .neon-glow-cyan {
+    box-shadow: 0 0 20px rgba(34, 211, 238, 0.4), inset 0 0 10px rgba(34, 211, 238, 0.2);
+  }
+  
+  .neon-glow-red {
+    box-shadow: 0 0 25px rgba(244, 63, 94, 0.5), inset 0 0 15px rgba(244, 63, 94, 0.3);
+  }
+
+  .hologram-noise {
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    opacity: 0.05;
+    pointer-events: none;
+  }
+
+  @keyframes floatUp {
+    0% { transform: translateY(100vh) scale(0); opacity: 0; }
+    20% { opacity: 0.5; }
+    80% { opacity: 0.5; }
+    100% { transform: translateY(-20vh) scale(1.5); opacity: 0; }
+  }
+
+  .energy-dust {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background-color: var(--theme-primary, #22d3ee);
+    border-radius: 50%;
+    pointer-events: none;
+    animation: floatUp 8s linear infinite;
+    box-shadow: 0 0 6px 1px var(--theme-primary, #22d3ee);
+  }
+
+  .grid-bg {
+    background-image: linear-gradient(rgba(34, 211, 238, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(34, 211, 238, 0.03) 1px, transparent 1px);
+    background-size: 50px 50px;
+    background-position: center center;
+  }
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
+

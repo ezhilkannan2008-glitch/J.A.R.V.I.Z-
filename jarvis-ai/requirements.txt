@@ -1,0 +1,5 @@
+PyQt6==6.8.0
+SpeechRecognition==3.10.1
+pyttsx3==2.90
+PyAudio==0.2.14
+setuptools
